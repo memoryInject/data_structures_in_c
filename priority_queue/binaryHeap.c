@@ -202,3 +202,9 @@ bool binaryHeapIsMinHeap(struct BinaryHeap* bh, int k){
 	// Recurse on both children to make sure they're also valid heap
 	return binaryHeapIsMinHeap(bh, left) && binaryHeapIsMinHeap(bh, right);
 }
+
+// Deallocate memory for heap
+void binaryHeapClear(struct BinaryHeap* bh){
+	binaryHeapState(bh);
+	free(bh->heap);
+}

@@ -59,3 +59,6 @@ int binaryHeapPoll(struct BinaryHeap* bh);
 // Recursively checks if this heap is a min heap
 // Called this method with k=0 to start at the root
 bool binaryHeapIsMinHeap(struct BinaryHeap* bh, int k);
+
+// Deallocate memory for heap
+void binaryHeapClear(struct BinaryHeap* bh);

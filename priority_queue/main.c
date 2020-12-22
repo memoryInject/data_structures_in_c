@@ -25,5 +25,9 @@ int main(int argc, char* argv[])
 	
 	printf("Is min heap ? : %s\n", binaryHeapIsMinHeap(&bh, 0) == 1 ? "true" : "false");
 
+	// Deallocate memory for heap
+	binaryHeapClear(&bh);
+	printf("Dealllocate heap memory..\n");
+
 	return 0;
 }
