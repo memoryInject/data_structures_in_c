@@ -106,6 +106,7 @@ int main(int argc, char *argv[])
   printf("Remove key: \"foo\", result: %s\n", hashTableRemove(&htsc, "foo") == 1 ? "true" : "false");
 
   printf("Capacity: %d, Size: %d\n", hashTableCapacity(&htsc), hashTableSize(&htsc));
+  printf("Active Buckets: %d\n", hashTableActiveBuckets(&htsc));
 
   // Print all key values in the hash table
   printf("\nPrint Hash Table: \n");

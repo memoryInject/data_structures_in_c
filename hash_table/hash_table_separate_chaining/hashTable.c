@@ -338,6 +338,14 @@ bool bucketRemoveEntry(struct HashTable *htsc, int bucketIndex, char *key)
     struct List *links = &(htsc->table[bucketIndex]);
     listRemoveData(links, entry);
     --htsc->size;
+    // Check if the size of list
+    if (links->size == 0)
+    {
+      // Deactivate list
+      links->state = false;
+      // Decrease the active buckets
+      --htsc->activeBuckets;
+    }
     return true;
   }
   else
@@ -367,12 +375,12 @@ int hashTableInsert(struct HashTable *htsc, char *key, int value)
 // Put and Add same as insert
 int hashTablePut(struct HashTable *htsc, char *key, int value)
 {
-  hashTableInsert(htsc, key, value);
+  return hashTableInsert(htsc, key, value);
 }
 
 int hashTableAdd(struct HashTable *htsc, char *key, int value)
 {
-  hashTableInsert(htsc, key, value);
+  return hashTableInsert(htsc, key, value);
 }
 
 // Get a key's value from the map and return a pointer to value
