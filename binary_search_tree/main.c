@@ -35,19 +35,23 @@ int main(int argc, char* argv[]){
 
 	// Traverse BST
 	printf("Preorder traverse: \n");
-	binarySearchTreePrint(&BST, PRE_ORDER);
+	binarySearchTreePrintOrder(&BST, PRE_ORDER);
 	printf("\n");
 	
 	printf("Inorder traverse: \n");
-	binarySearchTreePrint(&BST, IN_ORDER);
+	binarySearchTreePrintOrder(&BST, IN_ORDER);
 	printf("\n");
 
 	printf("Postorder traverse: \n");
-	binarySearchTreePrint(&BST, POST_ORDER);
+	binarySearchTreePrintOrder(&BST, POST_ORDER);
 	printf("\n");
 
 	printf("Levelorder traverse: \n");
-	binarySearchTreePrint(&BST, LEVEL_ORDER);
+	binarySearchTreePrintOrder(&BST, LEVEL_ORDER);
+	printf("\n");
+
+	printf("Print prettier tree: \n");
+	binarySearchTreePrint(&BST);
 	printf("\n");
 
 	// BST height

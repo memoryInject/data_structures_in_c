@@ -1,6 +1,9 @@
 /*
  * Binary Search Tree (BST) implementaion.
  * For Level order traverse we use queue data structure.
+ *
+ * @author Mahesh MS, msmahesh@live.com
+ * github: https://github.com/memoryInject
 */
 
 #include <stdbool.h>
@@ -108,6 +111,9 @@ struct Node* postorderNode(struct Node* node);
 // Level order traverse helper method using queue
 void levelorderNode(struct Node* node, int size);
 
+// Print prettier tree
+int printPretty(struct Node* node, int isLeft, int offset, int depth, char s[20][255]);
+
 // Recursive helper method to compute the hight of the tree
 int treeHeight(struct Node* node);
 
@@ -124,10 +130,14 @@ bool binarySearchTreeAdd(struct BinarySearchTree* BST, int data);
 bool binarySearchTreeRemove(struct BinarySearchTree* BST, int data);
 
 // Travese BST and print data
-void binarySearchTreePrint(struct BinarySearchTree* BST, enum traverseOrder order);
+void binarySearchTreePrintOrder(struct BinarySearchTree* BST, enum traverseOrder order);
+
+// Print prettier BST 
+void binarySearchTreePrint(struct BinarySearchTree* BST);
 
 // Calculate height of the BST
 int binarySearchTreeHeight(struct BinarySearchTree* BST);
 
 // Clean up BST - deallocate node memory
 void binarySearchTreeClear(struct BinarySearchTree* BST);
+

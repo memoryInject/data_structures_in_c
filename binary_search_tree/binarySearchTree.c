@@ -1,6 +1,9 @@
 /*
  * Binary Search Tree (BST) implementaion.
  * For Level order traverse we use queue data structure.
+ *
+ * @author Mahesh MS, msmahesh@live.com
+ * github: https://github.com/memoryInject
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -311,6 +314,37 @@ void levelorderNode(struct Node* node, int size){
 	queueClear(&queue);
 }
 
+// Print prettier tree
+int printPretty(struct Node* node, int isLeft, int offset, int depth, char s[20][255]){
+	char b[20];
+	int width = 5;
+
+	if (!node)
+		return 0;
+
+	sprintf(b, "(%03d)", node->data);
+
+	int left = printPretty(node->left, 1, offset, depth + 1, s);
+	int right = printPretty(node->right, 0, offset + left + width, depth + 1, s);
+
+	for (int i = 0; i < width; i++)
+		s[depth][offset + left + i] = b[i];
+
+	if (depth && isLeft){
+		for(int i = 0; i < width + right; i++)
+			s[depth - 1][offset + left + width / 2 + i] = '-';
+
+		s[depth - 1][offset + left + width / 2] = '.';
+	} else if (depth && !isLeft){
+		for (int i = 0; i < left + width; i++)
+			s[depth - 1][offset - width / 2 + i] = '-';
+
+		s[depth - 1][offset + left + width / 2] = '.';
+	}
+
+	return left + width + right;
+}
+
 // Recursive helper method to compute the hight of the tree
 int treeHeight(struct Node* node){
 	if (node == NULL) return 0;
@@ -362,7 +396,7 @@ bool binarySearchTreeRemove(struct BinarySearchTree* BST, int data){
 }
 
 // Travese BST and print data
-void binarySearchTreePrint(struct BinarySearchTree* BST, enum traverseOrder order){
+void binarySearchTreePrintOrder(struct BinarySearchTree* BST, enum traverseOrder order){
 	binarySearchTreeState(BST); // Check if the BST is active	
 	switch (order){
 		case PRE_ORDER:
@@ -381,6 +415,20 @@ void binarySearchTreePrint(struct BinarySearchTree* BST, enum traverseOrder orde
 	}
 }
 
+// Print prettier BST 
+void binarySearchTreePrint(struct BinarySearchTree* BST){
+	binarySearchTreeState(BST);
+	
+	char s[20][255];
+	for (int i = 0; i < binarySearchTreeHeight(BST); i++)
+		sprintf(s[i], "%80s", " ");
+	
+	printPretty(BST->root, 0, 0, 0, s);
+
+	for (int i = 0; i < binarySearchTreeHeight(BST); i++)
+		printf("%s\n", s[i]);
+}
+
 // Calculate height of the BST
 int binarySearchTreeHeight(struct BinarySearchTree* BST){
 	return treeHeight(BST->root);
@@ -392,3 +440,4 @@ void binarySearchTreeClear(struct BinarySearchTree* BST){
 	BST->root = clearNode(BST->root);
 	BST->nodeCount = 0;
 }
+
