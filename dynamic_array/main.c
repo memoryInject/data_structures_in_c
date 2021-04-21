@@ -4,9 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-	Array *a = malloc(sizeof(*a)); // create a dynamic array pointer a
-
-	initArray(a, 5); // 5 units space initialized
+	Array* a = initArray(5); // 5 elements initialized
 	
 	int i;
 	for(i = 0; i < 10; i++){
@@ -24,10 +22,7 @@ int main(int argc, char* argv[])
 	printArray(a);
 	printf("Size: %ld\n", a->used);
 
-
 	freeArray(a); // free up memory
-
-	free(a); // free up all memory
 
 	return 0;
 }

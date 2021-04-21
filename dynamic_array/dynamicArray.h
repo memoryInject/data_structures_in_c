@@ -6,8 +6,8 @@ typedef struct{
 	size_t size;	// total space in the array
 }Array;
 
-// Initialize array element
-void initArray(Array* a, size_t initialSize);
+// Initialize array element and return the array pointer
+Array* initArray(size_t initialSize);
 
 // Insert elements to array
 void insertArray(Array* a, int element);
