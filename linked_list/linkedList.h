@@ -21,7 +21,7 @@ typedef struct List{
 void debugData(struct Node* node);
 
 // Initialize linked list
-void listInit(struct List* list, bool doubly);
+struct List* listInit(bool doubly);
 
 // Check if the list is active
 bool listIsActive(struct List* list);

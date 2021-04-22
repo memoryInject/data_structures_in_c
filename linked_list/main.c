@@ -7,11 +7,7 @@
 int main(int argc, char* argv[])
 {
 	//struct List newList;
-	struct List* list;
-	list = (struct List*)malloc(sizeof(struct List));
-	//list = &newList;
-	
-	listInit(list, true);
+	struct List* list =	listInit(true);
 	listAdd(list, 5);
 	listAdd(list, 6);
 	listAddFirst(list, 3);
@@ -47,7 +43,6 @@ int main(int argc, char* argv[])
 	listPrint(list);
 
 	listClear(list);
-	free(list);
 	
 	return 0;
 

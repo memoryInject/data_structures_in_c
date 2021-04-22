@@ -11,12 +11,15 @@ void debugData(struct Node* node){
 }
 
 // Initialize linked list
-void listInit(struct List* list, bool doubly){
+struct List* listInit(bool doubly){
+	struct List* list = (struct List*) malloc(sizeof(struct List));
 	list->head = NULL;
 	list->tail = NULL;
 	list->size = 0;
 	list->doubly = doubly;
 	list->state = true; // activate the list
+
+	return list;
 }
 
 // Check if the list is active
@@ -405,6 +408,7 @@ void listClear(struct List* list){
 	list->tail = NULL;
 	list->size = 0;
 	iter = NULL;
+	free(list);
 }
 
 // Print linked list data
