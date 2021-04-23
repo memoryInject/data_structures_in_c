@@ -24,10 +24,13 @@ void debugData(struct Node* node){
 }
 
 // Initialize stack
-void stackInit(struct Stack* stack){
+struct Stack* stackInit(){
+	struct Stack* stack = (struct Stack*) malloc(sizeof(struct Stack));
 	stack->head = NULL;
 	stack->size = 0;
 	stack->state = true; // activate the stack 
+
+	return stack;
 }
 
 // Check if the stack is active
@@ -115,6 +118,8 @@ void stackClear(struct Stack* stack){
 	stackState(stack);
 	if(stackIsEmpty(stack)){
 		printf("Stack is empty...");
+		printf("Clear empty stack...");
+		free(stack);
 		exit(EXIT_SUCCESS);
 	}
 	else{
@@ -129,6 +134,7 @@ void stackClear(struct Stack* stack){
 		}
 		stack->head = NULL;
 		stack->size = 0;
+		free(stack);
 	}
 }
 
@@ -149,3 +155,4 @@ void stackPrint(struct Stack* stack){
   		}
 	}
 }
+

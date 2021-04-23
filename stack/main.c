@@ -6,8 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-	struct Stack* stack = (struct Stack*) malloc(sizeof (struct Stack*));
-	stackInit(stack);
+	struct Stack* stack = stackInit();
 	stackPush(stack, 5);
 	printf("Stack Head: %d\n", stack->head->data);
 	printf("Stack is empty: %s\n", stackIsEmpty(stack)==0 ? "false": "true");
@@ -26,12 +25,8 @@ int main(int argc, char* argv[])
 	printf("Stack Print: \n");
 	stackPrint(stack);
 	
-	// clear stack
+	// Clear stack and deallocate memory
 	stackClear(stack);
-	printf("Stack clear: %s\n", stack->head == NULL ? "clear" : "not clear");
-
-	// free stack
-	free(stack);
 
 	return 0;
 }

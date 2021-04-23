@@ -30,7 +30,7 @@ typedef struct Stack{
 void debugData(struct Node* node);
 
 // Initialize stack
-void stackInit(struct Stack* stack);
+struct Stack* stackInit();
 
 // Check if the stack is active
 bool stackIsActive(struct Stack* stack);
@@ -58,3 +58,4 @@ void stackClear(struct Stack* stack);
 
 // Print pretty stack data, O(n)
 void stackPrint(struct Stack* stack);
+
