@@ -1,3 +1,5 @@
 dynamic_array.c
 *.o*
 *temp*
+*.swp
+*.swo
