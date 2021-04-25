@@ -25,11 +25,14 @@ void debugData(struct Node* node){
 }
 
 // Initialize queue
-void queueInit(struct Queue* queue){
+struct Queue* queueInit(void){
+	struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
 	queue->state = true; // activate the queue
+
+	return queue;
 }
 
 // Check if the queue is active
@@ -139,6 +142,8 @@ void queueClear(struct Queue* queue){
 	queueState(queue);
 	if(queueIsEmpty(queue)){
 		printf("Queue is empty...");
+		printf("Clear empty queue...");
+		free(queue);
 		exit(EXIT_SUCCESS);
 	}
 	else{
@@ -154,6 +159,8 @@ void queueClear(struct Queue* queue){
 		queue->head = NULL;
 		queue->tail = NULL;
 		queue->size = 0;
+
+		free(queue);
 	}
 }
 

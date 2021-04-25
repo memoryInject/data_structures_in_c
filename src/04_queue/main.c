@@ -6,8 +6,7 @@
 // Test drive code
 int main(int argc, char* argv[])
 {
-	struct Queue* queue = (struct Queue*) malloc(sizeof (struct Queue*));
-	queueInit(queue);
+	struct Queue* queue = queueInit();
 	queuePush(queue, 5);
 	printf("Queue Head: %d\n", queue->head->data);
 	printf("Queue is empty: %s\n", queueIsEmpty(queue)==0 ? "false": "true");
@@ -28,10 +27,6 @@ int main(int argc, char* argv[])
 	
 	// clear queue
 	queueClear(queue);
-	printf("Queue clear: %s\n", queue->head == NULL ? "clear" : "not clear");
-
-	// free queue
-	free(queue);
 
 	return 0;
 }

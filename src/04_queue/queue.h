@@ -31,7 +31,7 @@ typedef struct Queue{
 void debugData(struct Node* node);
 
 // Initialize queue
-void queueInit(struct Queue* queue);
+struct Queue* queueInit(void);
 
 // Check if the queue is active
 bool queueIsActive(struct Queue* queue);
