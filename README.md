@@ -1,6 +1,7 @@
 # Data Structures in C
 Fundamental data structures created in C.
-
+![example workflow](https://github.com/memoryInject/data_structures_in_c/actions/workflows/c-cpp.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
 
