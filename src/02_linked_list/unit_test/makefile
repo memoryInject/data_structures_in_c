@@ -4,7 +4,7 @@ CLEANUP = rm -rf
 MKDIR = mkdir -p
 TARGET_EXTENSION=.out
 
-UNITY_ROOT=../../unit_test_src
+UNITY_ROOT=../../../libs/unity
 
 # CFLAGS=-std=c89
 CFLAGS += -Wall
@@ -22,9 +22,9 @@ CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 #CFLAGS += -Wno-misleading-indentation
 
-TARGET_BASE1=dynamicArrayTest
+TARGET_BASE1=linkedListTest
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
-SRC_FILES1=$(UNITY_ROOT)/unity.c dynamicArrayTest.c  ../dynamicArray.c 
+SRC_FILES1=$(UNITY_ROOT)/unity.c linkedListTest.c  ../linkedList.c 
 
 INC_DIRS=-Isrc -I$(UNITY_ROOT) -I../
 SYMBOLS=

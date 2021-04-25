@@ -24,7 +24,7 @@ void debugData(struct Node* node){
 }
 
 // Initialize stack
-struct Stack* stackInit(){
+struct Stack* stackInit(void){
 	struct Stack* stack = (struct Stack*) malloc(sizeof(struct Stack));
 	stack->head = NULL;
 	stack->size = 0;
@@ -96,8 +96,8 @@ int stackPop(struct Stack* stack){
 		stack->head = stack->head->next;
 		free(iter);
 		iter = NULL;
-		return data;
 		--stack->size;
+		return data;
 	}
 }
 

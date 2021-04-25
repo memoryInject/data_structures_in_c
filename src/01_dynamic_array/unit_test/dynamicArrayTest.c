@@ -8,7 +8,7 @@
 
 
 #include "../dynamicArray.h"
-#include "../../unit_test_src/unity.h"
+#include "../../../libs/unity/unity.h"
 
 // This code run before each test
 void setUp(void){

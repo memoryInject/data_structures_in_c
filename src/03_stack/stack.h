@@ -19,7 +19,7 @@ typedef struct Node{
 }Node;
 
 
-// Create stak struct to keep track of head, size and state of stack.
+// Create stack struct to keep track of head, size and state of stack.
 typedef struct Stack{
 	struct Node* head;
 	int size;
@@ -30,7 +30,7 @@ typedef struct Stack{
 void debugData(struct Node* node);
 
 // Initialize stack
-struct Stack* stackInit();
+struct Stack* stackInit(void);
 
 // Check if the stack is active
 bool stackIsActive(struct Stack* stack);
