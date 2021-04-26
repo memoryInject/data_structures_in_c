@@ -2,6 +2,8 @@ DYNAMIC_ARRAY = src/01_dynamic_array/unit_test
 LINKED_LIST = src/02_linked_list/unit_test
 STACK = src/03_stack/unit_test
 QUEUE = src/04_queue/unit_test
+PRIORITY_QUEUE_BINARY_HEAP = src/05_priority_queue/binary_heap/unit_test
+
 
 all: default
 
@@ -23,4 +25,8 @@ default:
 	
 	@echo "QUEUE_TEST"
 	@cd $(QUEUE) && $(MAKE)
+	@echo "\n"
+	
+	@echo "PRIORITY_QUEUE_BINARY_HEAP_TEST"
+	@cd $(PRIORITY_QUEUE_BINARY_HEAP) && $(MAKE)
 	@echo "\n"

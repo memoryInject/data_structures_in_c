@@ -11,13 +11,16 @@
 #include "binaryHeap.h"
 
 // Initialize binary heap with max capacity it will activate heap
-void binaryHeapInit(struct BinaryHeap* bh, int capacity){
+struct BinaryHeap* binaryHeapInit(int capacity){
+	struct BinaryHeap* bh = (struct BinaryHeap*) malloc(sizeof(struct BinaryHeap));
 	bh->size = 0;
 	bh->capacity = capacity;
 	// Set array with capacity
 	bh->heap = (int*) malloc(sizeof(int) * capacity);
 	// Activate Binary Heap
 	bh->state = true;
+
+	return bh;
 }
 
 // Check if the current binary heap is active
@@ -207,4 +210,6 @@ bool binaryHeapIsMinHeap(struct BinaryHeap* bh, int k){
 void binaryHeapClear(struct BinaryHeap* bh){
 	binaryHeapState(bh);
 	free(bh->heap);
+	free(bh);
 }
+

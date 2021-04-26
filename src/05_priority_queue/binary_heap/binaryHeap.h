@@ -15,7 +15,7 @@ typedef struct BinaryHeap{
 }BinaryHeap;
 
 // Initialize binary heap with max capacity it will activate heap
-void binaryHeapInit(struct BinaryHeap* bh, int capacity);
+struct BinaryHeap* binaryHeapInit(int capacity);
 
 // Check if the current binary heap is active
 bool binaryHeapIsActive(struct BinaryHeap* bh);
@@ -62,3 +62,4 @@ bool binaryHeapIsMinHeap(struct BinaryHeap* bh, int k);
 
 // Deallocate memory for heap
 void binaryHeapClear(struct BinaryHeap* bh);
+
