@@ -43,7 +43,7 @@ typedef struct IdxBinaryHeap{
 }IdxBinaryHeap;
 
 // Initialize a indexed binary heap with a maximum capacity of maxSize.
-void idxBinaryHeapInit(struct IdxBinaryHeap* ibh, int maxSize);
+struct IdxBinaryHeap* idxBinaryHeapInit(int maxSize);
 
 bool idxBinaryHeapIsActive(struct IdxBinaryHeap* ibh);
 

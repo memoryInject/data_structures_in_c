@@ -37,7 +37,8 @@ int power(int base, int exponent){
 }
 
 // Initialize a indexed binary heap with a maximum capacity of maxSize.
-void idxBinaryHeapInit(struct IdxBinaryHeap* ibh, int maxSize){
+struct IdxBinaryHeap* idxBinaryHeapInit(int maxSize){
+	struct IdxBinaryHeap* ibh = (struct IdxBinaryHeap*) malloc(sizeof(struct IdxBinaryHeap));
 	ibh->D = 2; // for binay heap
 	ibh->N = max(ibh->D+1, maxSize);
 	
@@ -57,6 +58,8 @@ void idxBinaryHeapInit(struct IdxBinaryHeap* ibh, int maxSize){
 
 	// Activate the heap
 	ibh->state = true;
+
+	return ibh;
 }
 
 bool idxBinaryHeapIsActive(struct IdxBinaryHeap* ibh){
@@ -293,6 +296,8 @@ void idxBinaryHeapClear(struct IdxBinaryHeap* ibh){
 
 	// Deactivate the heap
 	ibh->state = false;
+
+	free(ibh);
 }
 
 void idxBinaryHeapPrint(struct IdxBinaryHeap* ibh){
