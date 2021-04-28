@@ -4,7 +4,7 @@ STACK = src/03_stack/unit_test
 QUEUE = src/04_queue/unit_test
 PRIORITY_QUEUE_BINARY_HEAP = src/05_priority_queue/binary_heap/unit_test
 PRIORITY_QUEUE_INDEXED_BINARY_HEAP = src/05_priority_queue/indexed_binary_heap/unit_test
-
+UNION_FIND = src/06_union_find/unit_test
 
 all: default
 
@@ -34,5 +34,9 @@ default:
 
 	@echo "PRIORITY_QUEUE_INDEXED_BINARY_HEAP_TEST"
 	@cd $(PRIORITY_QUEUE_INDEXED_BINARY_HEAP) && $(MAKE)
+	@echo "\n"
+
+	@echo "UNION_FIND_TEST"
+	@cd $(UNION_FIND) && $(MAKE)
 	@echo "\n"
 

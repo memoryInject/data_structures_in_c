@@ -11,11 +11,13 @@
 #include "unionFind.h"
 
 // Initialize UnionFind with size
-void unionFindInit(struct UnionFind* uf, int size){
+struct UnionFind* unionFindInit(int size){
 	if(size <= 0){
 		printf("Size must be above 0.\n");
 		exit(EXIT_FAILURE);
 	}
+
+	struct UnionFind* uf = (struct UnionFind*) malloc(sizeof(struct UnionFind));
 
 	uf->size = size;
 	uf->numComponents = size;
@@ -28,6 +30,8 @@ void unionFindInit(struct UnionFind* uf, int size){
 	}
 
 	uf->state = true;
+
+	return uf;
 }
 
 // Check if the union find is active
@@ -129,6 +133,8 @@ void unionFindClear(struct UnionFind* uf){
 	uf->numComponents = 0;
 	// Deactivate union find
 	uf->state = false;
+
+	free(uf);
 }
 
 // Pretty print union find
@@ -153,3 +159,5 @@ void unionFindPrint(struct UnionFind* uf){
 	printf("\n\n");
 
 	printf("Components left: %d\n", unionFindComponents(uf));
+}
+

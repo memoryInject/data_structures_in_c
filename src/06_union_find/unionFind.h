@@ -18,7 +18,7 @@ typedef struct UnionFind {
 }UnionFind;
 
 // Initialize UnionFind with size
-void unionFindInit(struct UnionFind* uf, int size);
+struct UnionFind*  unionFindInit(int size);
 
 // Check if the union find is active
 bool unionFindIsActive(struct UnionFind* uf);
