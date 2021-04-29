@@ -46,7 +46,7 @@ typedef struct Queue{
 }Queue;
 
 // Initialize queue
-void queueInit(struct Queue* queue);
+struct Queue* queueInit(void);
 
 // Push an element to the queue, O(1).
 void queuePush(struct Queue* queue, struct Node* treeNode);
@@ -66,7 +66,7 @@ void queueClear(struct Queue* queue);
 void debugData(struct Node* node);
 
 // Initialize BST
-void binarySearchTreeInit(struct BinarySearchTree* BST);
+struct BinarySearchTree* binarySearchTreeInit(void);
 
 // Check if the BST is active
 bool binarySearchTreeIsActive(struct BinarySearchTree* BST);

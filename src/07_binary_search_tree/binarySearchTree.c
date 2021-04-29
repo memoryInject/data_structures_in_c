@@ -18,10 +18,13 @@
 */
 
 // Initialize queue
-void queueInit(struct Queue* queue){
+struct Queue* queueInit(void){
+	struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
+
+	return queue;
 }
 
 // Push an element to the queue, O(1).
@@ -78,6 +81,8 @@ void queueClear(struct Queue* queue){
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
+
+	free(queue);
 }
 
 /*
@@ -92,10 +97,13 @@ void debugData(struct Node* node){
 }
 
 // Initialize BST
-void binarySearchTreeInit(struct BinarySearchTree* BST){
+struct BinarySearchTree* binarySearchTreeInit(void){
+	struct BinarySearchTree* BST = (struct BinarySearchTree*) malloc(sizeof(struct BinarySearchTree));
 	BST->root = NULL;
 	BST->nodeCount = 0;
 	BST->state = true; // Activate the BST
+
+	return BST;
 }
 
 // Check if the BST is active
@@ -289,29 +297,27 @@ struct Node* postorderNode(struct Node* node){
 // Level order traverse helper method using queue
 void levelorderNode(struct Node* node, int size){
 	// Bring queue data structure
-	struct Queue queue;
-	// Initialize queue
-	queueInit(&queue);
+	struct Queue* queue = queueInit();
 	// Add the node to queue
-	queuePush(&queue, node);
+	queuePush(queue, node);
 	// Iterator
 	struct Node* iter;
 	for (int i = 0; i < size; i++){
 		// dequeue data from queue, this will return the tree node
-		iter = queuePop(&queue);
+		iter = queuePop(queue);
 		printf("%d\n", iter->data);
 		// Check if there is any childern, 
 		// add children to queue
 		if(iter->left != NULL){
-			queuePush(&queue, iter->left);
+			queuePush(queue, iter->left);
 		}
 		if(iter->right != NULL){
-			queuePush(&queue, iter->right);
+			queuePush(queue, iter->right);
 		}
 	}
 
 	// Clean up queue memory
-	queueClear(&queue);
+	queueClear(queue);
 }
 
 // Print prettier tree
@@ -439,5 +445,6 @@ void binarySearchTreeClear(struct BinarySearchTree* BST){
 	binarySearchTreeState(BST); // Check if the BST is active	
 	BST->root = clearNode(BST->root);
 	BST->nodeCount = 0;
+	free(BST);
 }
 
