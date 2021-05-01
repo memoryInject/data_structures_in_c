@@ -80,7 +80,7 @@ typedef struct HashTable
 } HashTable;
 
 // Init HashTableSeparateChaining
-void hashTableInit(struct HashTable *htsc, int capacity, float maxLoadFactor);
+struct HashTable* hashTableInit(int capacity, float maxLoadFactor);
 
 // Check if the hash table is active
 bool hashTableIsActive(struct HashTable *htsc);
@@ -149,3 +149,4 @@ void hashTableClear(struct HashTable *htsc);
 
 // Print pretty: print key-value pairs in the hash table
 void hashTablePrint(struct HashTable *htsc);
+

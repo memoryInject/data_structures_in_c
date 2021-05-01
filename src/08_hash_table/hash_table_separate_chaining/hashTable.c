@@ -154,25 +154,24 @@ void listClear(struct List *list)
 
 // Create Hash Table Separate Chaining - htsc
 // Init HashTableSeparateChaining
-void hashTableInit(struct HashTable *htsc, int capacity, float maxLoadFactor)
-{
-  htsc->capacity = capacity > DEFAULT_CAPACITY ? capacity : DEFAULT_CAPACITY;
+struct HashTable* hashTableInit(int capacity, float maxLoadFactor){
+	struct HashTable* htsc = (struct HashTable*) malloc(sizeof(struct HashTable));
+	htsc->capacity = capacity > DEFAULT_CAPACITY ? capacity : DEFAULT_CAPACITY;
 
-  if (maxLoadFactor <= 0 || maxLoadFactor > 1)
-  {
-    htsc->maxLoadFactor = DEFAULT_LOAD_FACTOR;
-  }
-  else
-  {
-    htsc->maxLoadFactor = maxLoadFactor;
-  }
+	if (maxLoadFactor <= 0 || maxLoadFactor > 1){
+		htsc->maxLoadFactor = DEFAULT_LOAD_FACTOR;
+	} else {
+		htsc->maxLoadFactor = maxLoadFactor;
+	}
 
-  htsc->threshold = (int)(htsc->capacity * htsc->maxLoadFactor);
-  htsc->table = (struct List *)malloc((sizeof(struct List)) * htsc->capacity);
-  htsc->state = true; // activate htsc
-  htsc->size = 0;
-  htsc->activeBuckets = 0;
-  htsc->resize = 0;
+	htsc->threshold = (int)(htsc->capacity * htsc->maxLoadFactor);
+	htsc->table = (struct List *)malloc((sizeof(struct List)) * htsc->capacity);
+	htsc->state = true; // activate htsc
+	htsc->size = 0;
+	htsc->activeBuckets = 0;
+	htsc->resize = 0;
+
+	return htsc;
 }
 
 // Check if the hash table is active
@@ -450,20 +449,20 @@ void hashTableValues(struct HashTable *htsc, int *arrValues)
 }
 
 // Clean up memory
-void hashTableClear(struct HashTable *htsc)
-{
+void hashTableClear(struct HashTable *htsc){
   hashTableState(htsc);
   struct List *bucket;
-  for (int i = 0; i < htsc->capacity; i++)
-  {
+  for (int i = 0; i < htsc->capacity; i++){
     bucket = &(htsc->table[i]);
-    if (bucket != NULL)
-    {
+    if (bucket != NULL){
       listClear(bucket);
     }
   }
+
   free(htsc->table);
   htsc->size = 0;
+
+  free(htsc);
 }
 
 // Print pretty: print key-value pairs in the hash table
@@ -491,3 +490,4 @@ void hashTablePrint(struct HashTable *htsc)
     }
   }
 }
+
