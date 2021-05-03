@@ -62,7 +62,7 @@ typedef struct HashTable{
 }HashTable;
 
 // Initialize HashTableOAB
-void hashTableInit(struct HashTable* htoab, int capacity, float loadFactor);
+struct HashTable* hashTableInit(int capacity, float loadFactor);
 	
 // These three helper methods are used to dictate how the probing
 //	is actually occur for whatever open addressing schema you are implementing.

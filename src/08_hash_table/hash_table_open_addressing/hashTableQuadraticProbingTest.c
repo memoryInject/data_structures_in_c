@@ -61,13 +61,11 @@ void TestQuadraticProbing(){
 	pause();
 
 	// Create a 'hash table open addressing basic' struct - htoab
-	struct HashTable htoab;
-
 	// Initialize hash table with capacity of 5 and loadFactor of 0.7
-	hashTableInit(&htoab, 5, 0.7);
+	struct HashTable* htoab = hashTableInit(5, 0.7);
 
 	// Add key-value(key: "foo", value: 2) to htoab
-	hashTableAdd(&htoab, "foo", 2);
+	hashTableAdd(htoab, "foo", 2);
 
 	// Generate random key value pairs and add to hash table
 	// Setting up random number
@@ -85,29 +83,29 @@ void TestQuadraticProbing(){
 		int value = (int)((((float)rand() / (float)(RAND_MAX)) * 500) + 100);
 
 		// Add key and value to hash table
-		hashTableAdd(&htoab, str, value);
+		hashTableAdd(htoab, str, value);
 	}
 
 	// Check hash table capacity and size
-	printf("Capacity: %d, Size: %d\n", hashTableCapacity(&htoab), hashTableSize(&htoab));
+	printf("Capacity: %d, Size: %d\n", hashTableCapacity(htoab), hashTableSize(htoab));
 
 	// Check how many times hash table resized
-	printf("Resized: %d times.\n\n", hashTableResizeAmount(&htoab));
+	printf("Resized: %d times.\n\n", hashTableResizeAmount(htoab));
 
 	// Check if the key exists in the htoab
-	printf("Key check: \"foo\", result: %s\n", hashTableHasKey(&htoab, "foo") == 1 ? "true" : "false");
+	printf("Key check: \"foo\", result: %s\n", hashTableHasKey(htoab, "foo") == 1 ? "true" : "false");
 	
-	int fooVal = hashTableGetValue(&htoab, "foo");
+	int fooVal = hashTableGetValue(htoab, "foo");
 	// Get key's value from the table
 	printf("\nValue of Key: \"foo\" is, value: %d\n", fooVal);
 
 
 	// Get all the keys from the hash table
-	struct Key* keys = hashTableKeys(&htoab);
+	struct Key* keys = hashTableKeys(htoab);
 
 	printf("\nKeys Recieved From Hash-Table: \n");
 	// Print all keys recived from the hash table
-	for (int i = 0; i < hashTableSize(&htoab); i++)
+	for (int i = 0; i < hashTableSize(htoab); i++)
 	{
 		printf("%s\n", keys[i].key);
 	}
@@ -115,11 +113,11 @@ void TestQuadraticProbing(){
 	free(keys);
 
 	// Get all the values from the hash table
-	struct Value* values = hashTableValues(&htoab);
+	struct Value* values = hashTableValues(htoab);
 
 	printf("\nValues Recieved From Hash-Table: \n");
 	// Print all values recived from the hash table
-	for (int i = 0; i < hashTableSize(&htoab); i++)
+	for (int i = 0; i < hashTableSize(htoab); i++)
 	{
 		printf("%d\n", values[i].value);
 	}
@@ -128,24 +126,23 @@ void TestQuadraticProbing(){
 	free(values);
 
 	// Remove bar from the hash table
-	printf("Remove key: \"bar\", result: %s\n", hashTableRemoveKey(&htoab, "bar") == 1 ? "true" : "false");
+	printf("Remove key: \"bar\", result: %s\n", hashTableRemoveKey(htoab, "bar") == 1 ? "true" : "false");
 
 	// Remove qHqoDer from the hash table
-	printf("Remove key: \"qHqoDer\", result: %s\n", hashTableRemoveKey(&htoab, "qHqoDer") == 1 ? "true" : "false");
+	printf("Remove key: \"qHqoDer\", result: %s\n", hashTableRemoveKey(htoab, "qHqoDer") == 1 ? "true" : "false");
 
 	// Remove foo from the hash table
-	printf("Remove key: \"foo\", result: %s\n", hashTableRemoveKey(&htoab, "foo") == 1 ? "true" : "false");
+	printf("Remove key: \"foo\", result: %s\n", hashTableRemoveKey(htoab, "foo") == 1 ? "true" : "false");
 
-	printf("Capacity: %d, Size: %d\n", hashTableCapacity(&htoab), hashTableSize(&htoab));
+	printf("Capacity: %d, Size: %d\n", hashTableCapacity(htoab), hashTableSize(htoab));
 	
 	// Print all key values in the hash table
 	printf("\nPrint Hash Table: \n");
-	hashTablePrint(&htoab);
+	hashTablePrint(htoab);
 
 	// Clean up memory
 	printf("\nClean up memory...\n");
-	hashTableClear(&htoab);
-	printf("Cleaned up: %s\n", hashTableSize(&htoab) == 0 ? "true" : "false");
+	hashTableClear(htoab);
 	
 	printf("%s\n", TOMBSTONE);
 	printf("Hash Table Open Addressing: Quadratic Probing - Test Complete.\n\n");

@@ -7,6 +7,7 @@ PRIORITY_QUEUE_INDEXED_BINARY_HEAP = src/05_priority_queue/indexed_binary_heap/u
 UNION_FIND = src/06_union_find/unit_test
 BINARY_SEARCH_TREE = src/07_binary_search_tree/unit_test
 HASH_TABLE_SEPERATE_CHAINING = src/08_hash_table/hash_table_separate_chaining/unit_test
+HASH_TABLE_OPEN_ADDRESSING = src/08_hash_table/hash_table_open_addressing/unit_test
 
 all: default
 
@@ -48,5 +49,9 @@ default:
 
 	@echo "HASH_TABLE_SEPERATE_CHAINING_TEST"
 	@cd $(HASH_TABLE_SEPERATE_CHAINING) && $(MAKE)
+	@echo "\n"
+
+	@echo "HASH_TABLE_OPEN_ADDRESSING_TEST"
+	@cd $(HASH_TABLE_OPEN_ADDRESSING) && $(MAKE)
 	@echo "\n"
 

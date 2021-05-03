@@ -41,7 +41,8 @@ unsigned long hash2(char* str){
 }
 
 // Initialize HashTableOAB
-void hashTableInit(struct HashTable* htoab, int capacity, float loadFactor){
+struct HashTable* hashTableInit(int capacity, float loadFactor){
+	struct HashTable* htoab = (struct HashTable*) malloc(sizeof(HashTable));
 	htoab->capacity = capacity > DEFAULT_CAPACITY ? capacity : DEFAULT_CAPACITY;
 
 	if(loadFactor <= 0 || loadFactor > 1){
@@ -60,6 +61,8 @@ void hashTableInit(struct HashTable* htoab, int capacity, float loadFactor){
 	htoab->usedBuckets = 0;
 	htoab->keyCount = 0;
 	htoab->resize = 0;
+
+	return htoab;
 }
 
 // Helper method to increase the capacity of the hash table.
@@ -503,6 +506,7 @@ struct Value* hashTableValues(struct HashTable* htoab){
 void hashTableClear(struct HashTable* htoab){
 	hashTableState(htoab);
 	clear(htoab);	
+	free(htoab);
 }
 
 // Print pretty: print key-value pairs in the hash table
