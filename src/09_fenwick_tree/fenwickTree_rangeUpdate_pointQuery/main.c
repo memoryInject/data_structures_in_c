@@ -54,35 +54,33 @@ void fenwickTreeTest(){
 	}
 
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, size);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, size);
 
 	// Add +10 to interval [1, 4] in O(log(n))
 	printf("\nUpdate range [1, 4] +10\n");
-	fenwickTreeUpdateRange(&ft, 1, 4, 10);
+	fenwickTreeUpdateRange(ft, 1, 4, 10);
 
 	// Get values at specific index after update
-	printf("Get value at index 1: %ld\n", fenwickTreeGet(&ft, 1)); // 11
-	printf("Get value at index 4: %ld\n", fenwickTreeGet(&ft, 4)); // 6
-	printf("Get value at index 5: %ld\n", fenwickTreeGet(&ft, 5)); // 5
+	printf("Get value at index 1: %ld\n", fenwickTreeGet(ft, 1)); // 11
+	printf("Get value at index 4: %ld\n", fenwickTreeGet(ft, 4)); // 6
+	printf("Get value at index 5: %ld\n", fenwickTreeGet(ft, 5)); // 5
 
 	// Add -20 to interval [3, 6] in O(log(n))
 	printf("\nUpdate range [3, 6] -20\n");
-	fenwickTreeUpdateRange(&ft, 3, 6, -20);
+	fenwickTreeUpdateRange(ft, 3, 6, -20);
 
 	// Get values at specific index after update
-	printf("Get value at index 3: %ld\n", fenwickTreeGet(&ft, 3)); // -7
-	printf("Get value at index 4: %ld\n", fenwickTreeGet(&ft, 4)); // -14
-	printf("Get value at index 5: %ld\n", fenwickTreeGet(&ft, 5)); // -15
+	printf("Get value at index 3: %ld\n", fenwickTreeGet(ft, 3)); // -7
+	printf("Get value at index 4: %ld\n", fenwickTreeGet(ft, 4)); // -14
+	printf("Get value at index 5: %ld\n", fenwickTreeGet(ft, 5)); // -15
 	
 
 	// Print data from the fenwick tree
 	printf("\nFenwick tree data: \n\n");
-	fenwickTreePrint(&ft);
+	fenwickTreePrint(ft);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 
