@@ -26,7 +26,8 @@ int lsb(int i) {
 
 // Construct a Fenwick tree with an initial set of values. The 'values' array
 //  MUST BE ONE BASED meaning values[0] doesn't get used, O(n) construction
-void fenwickTreeInit(struct FenwickTree* ft, long* values, int length){
+struct FenwickTree* fenwickTreeInit(long* values, int length){
+	struct FenwickTree* ft = (struct FenwickTree*) malloc(sizeof(struct FenwickTree));
 	ft->N = length;
 	values[0] = 0;
 
@@ -46,6 +47,8 @@ void fenwickTreeInit(struct FenwickTree* ft, long* values, int length){
 	}
 
 	ft->state = true; // activate the tree
+
+	return ft;
 }
 
 // Check if the tree is active
@@ -108,6 +111,8 @@ void fenwickTreeClear(struct FenwickTree* ft){
 	fenwickTreeState(ft);
 	free(ft->tree);
 	ft->N = 0;
+
+	free(ft);
 }
 
 // Print pretty tree data, O(n)

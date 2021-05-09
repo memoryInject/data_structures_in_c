@@ -54,22 +54,20 @@ void fenwickTreeTest(){
 	}
 
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, size);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, size);
 
 	// Prefix sum of 5 elements
-	printf("\nPrefix sum of 5 elements: %ld\n", fenwickTreePrefixSum(&ft, 5));
+	printf("\nPrefix sum of 5 elements: %ld\n", fenwickTreePrefixSum(ft, 5));
 
 	// Sum between index 5 and 12
-	printf("Sum between index 5 and 12: %ld\n", fenwickTreeSum(&ft, 5, 12));
+	printf("Sum between index 5 and 12: %ld\n", fenwickTreeSum(ft, 5, 12));
 
 	// Add 5 to index 7
 	testArray[7] += 5;
 
 	// point update FenwickTree
-	fenwickTreeAdd(&ft, 7, 5);
+	fenwickTreeAdd(ft, 7, 5);
 	
 	// Print the test array
 	printf("\ninput array data after update index 7 +5: \n");
@@ -78,13 +76,13 @@ void fenwickTreeTest(){
 	}
 
 	// Sum between index 5 and 12
-	printf("Sum between index 5 and 12 after update: %ld\n", fenwickTreeSum(&ft, 5, 12));
+	printf("Sum between index 5 and 12 after update: %ld\n", fenwickTreeSum(ft, 5, 12));
 
 	// Print data from the fenwick tree
 	printf("\nFenwick tree data: \n");
-	fenwickTreePrint(&ft);
+	fenwickTreePrint(ft);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 

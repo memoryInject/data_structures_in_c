@@ -6,7 +6,7 @@
 #include <time.h>
 
 
-#include "fenwickTree.h"
+#include "../fenwickTree.h"
 #include "unity.h"
 
 // This code run before each test
@@ -34,28 +34,24 @@ void test_function_fenwickTreeConstruction(void){
 	}
 
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, ARRAY_SIZE);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, ARRAY_SIZE);
 	
 	// Print data from the fenwick tree
 	printf("\nFenwick tree data: \n");
-	fenwickTreePrint(&ft);
+	fenwickTreePrint(ft);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 
 void test_function_fenwickTreePrefixSum(void){
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, ARRAY_SIZE);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, ARRAY_SIZE);
 
 	// Prefix sum of 5 elements
-	long ftSum =  fenwickTreePrefixSum(&ft, 5);
+	long ftSum =  fenwickTreePrefixSum(ft, 5);
 	printf("\nPrefix sum of 5 elements: %ld\n", ftSum);
 
 	// check the sum of 5 elements in the testArray
@@ -67,20 +63,18 @@ void test_function_fenwickTreePrefixSum(void){
 	TEST_ASSERT_EQUAL(sum, ftSum);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 
 void test_function_fenwickTreeSum(void){
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, ARRAY_SIZE);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, ARRAY_SIZE);
 	
 	// Sum between index 5 and 12
 	int start = 5;
 	int end = 12;
-	long ftSum =  fenwickTreeSum(&ft, start, end);
+	long ftSum =  fenwickTreeSum(ft, start, end);
 	printf("\nSum between index %d and %d: %ld\n", start, end, ftSum);
 
 
@@ -93,15 +87,13 @@ void test_function_fenwickTreeSum(void){
 	TEST_ASSERT_EQUAL(sum, ftSum);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 
 void test_function_fenwickTreeAdd(void){
 	// Setup Fenwick tree
-	struct FenwickTree ft;
-
 	// init Fenwick tree
-	fenwickTreeInit(&ft, testArray, ARRAY_SIZE);
+	struct FenwickTree* ft = fenwickTreeInit(testArray, ARRAY_SIZE);
 
 	// Add 5 to index 7
 	int index = 7;
@@ -111,12 +103,12 @@ void test_function_fenwickTreeAdd(void){
 	printf("\nAdded %d to index %d\n", add, index);
 
 	// point update FenwickTree
-	fenwickTreeAdd(&ft, 7, 5);
+	fenwickTreeAdd(ft, 7, 5);
 	
 	// Sum between index 5 and 12
 	int start = 5;
 	int end = 12;
-	long ftSum =  fenwickTreeSum(&ft, start, end);
+	long ftSum =  fenwickTreeSum(ft, start, end);
 	printf("Sum between index %d and %d after added %d: %ld\n", start, end, add, ftSum);
 
 
@@ -129,7 +121,7 @@ void test_function_fenwickTreeAdd(void){
 	TEST_ASSERT_EQUAL(sum, ftSum);
 
 	// Clen up memory
-	fenwickTreeClear(&ft);
+	fenwickTreeClear(ft);
 }
 
 

@@ -4,7 +4,7 @@ CLEANUP = rm -rf
 MKDIR = mkdir -p
 TARGET_EXTENSION=.out
 
-UNITY_ROOT=../../../unit_test_src
+UNITY_ROOT=../../../../libs/unity
 
 # CFLAGS=-std=c89
 CFLAGS += -Wall
