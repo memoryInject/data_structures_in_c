@@ -32,7 +32,7 @@ void construct(struct SuffixArray* sa);
 void kasai(struct SuffixArray* sa);
 
 // Initialize Suffix Array
-void suffixArrayInit(struct SuffixArray* sa, char* text, int len);
+struct SuffixArray* suffixArrayInit(char* text, int len);
 
 // Check if the SuffixArray  is active
 bool suffixArrayIsActive(struct SuffixArray* sa);

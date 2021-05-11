@@ -15,12 +15,15 @@
 #include "suffixArray.h"
 
 // Initialize Suffix Array
-void suffixArrayInit(struct SuffixArray* sa, char* text, int len){
+struct SuffixArray* suffixArrayInit(char* text, int len){
+	struct SuffixArray* sa = (struct SuffixArray*) malloc(sizeof(struct SuffixArray));
 	strcpy(sa->T, text); // Store incoming string to T;
 	sa->N = len;
 	construct(sa);
 	kasai(sa);
 	sa->state = true;
+
+	return sa;
 }
 
 // Check if the SuffixArray  is active
@@ -85,6 +88,8 @@ void suffixArrayClear(struct SuffixArray* sa){
 	sa->constructedSa = false;
 	sa->constructedLcpArray = false;
 	sa->state = false; // Deactivate the struct
+
+	free(sa);
 }
 
 

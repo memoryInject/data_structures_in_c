@@ -15,11 +15,10 @@ int main(int argc, char* argv[]){
 	// least common prefix(lcp) array for "banana" {1, 3, 0, 0, 2, 0}
 	char* text = "banana";
 	int size = 6;
-	struct SuffixArray sa;
-	suffixArrayInit(&sa, text, size);
-	suffixArrayPrint(&sa);
+	struct SuffixArray* sa = suffixArrayInit(text, size);
+	suffixArrayPrint(sa);
 
-	suffixArrayClear(&sa);
+	suffixArrayClear(sa);
 	return 0;
 }
 
