@@ -11,6 +11,7 @@ HASH_TABLE_OPEN_ADDRESSING = src/08_hash_table/hash_table_open_addressing/unit_t
 FENWICK_TREE_RANG_QUERY_POINT_UPDATE = src/09_fenwick_tree/fenwickTree_rangeQuery_pointUpdate/unit_test
 FENWICK_TREE_RANG_UPDATE_POINT_QUERY = src/09_fenwick_tree/fenwickTree_rangeUpdate_pointQuery/unit_test
 SUFFIX_ARRAY = src/10_suffix_array/unit_test
+AVL_TREE = src/11_balanced_tree/unit_test
 
 all: default
 
@@ -70,3 +71,6 @@ default:
 	@cd $(SUFFIX_ARRAY) && $(MAKE)
 	@echo "\n"
 
+	@echo "AVL_TREE_TEST"
+	@cd $(AVL_TREE) && $(MAKE)
+	@echo "\n"
