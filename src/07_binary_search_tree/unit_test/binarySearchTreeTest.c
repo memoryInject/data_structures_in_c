@@ -48,7 +48,7 @@ void test_function_binarySearchTree(void){
 
 	TEST_ASSERT_EQUAL(BST->root->data, 12);
 	TEST_ASSERT_EQUAL(binarySearchTreeSize(BST), 11);
-	TEST_ASSERT_EQUAL(binarySearchTreeHeight(BST), 4);
+	TEST_ASSERT_EQUAL(binarySearchTreeHeight(BST), 5);
 	TEST_ASSERT_EQUAL(binarySearchTreeRemove(BST, 23), true);
 
 

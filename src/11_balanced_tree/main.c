@@ -20,60 +20,57 @@ int main(int argc, char* argv[]){
 	int r = rand();
 	printf("Random number test: %d\n", (int)(((float)r/(float)(RAND_MAX))*24));
 
-	// Create a Binary Search Tree
-	struct AVLTree AVL;
-	
-	// Initialize AVL
-	avlTreeInit(&AVL);
+	// Create a AVL Tree
+	struct AVLTree* AVL = avlTreeInit();
 	
 	// Add data to AVL
-	avlTreeAdd(&AVL, 12);
-	avlTreeAdd(&AVL, 2);
-	avlTreeAdd(&AVL, 14);
+	avlTreeAdd(AVL, 12);
+	avlTreeAdd(AVL, 2);
+	avlTreeAdd(AVL, 14);
 	for(int i = 0; i < 24; i++){
 		//avlTreeAdd(&AVL, i);
 		// Add a random number to the tree
-		avlTreeAdd(&AVL, (int)(((float)r/(float)(RAND_MAX))*(i)));
+		avlTreeAdd(AVL, (int)(((float)r/(float)(RAND_MAX))*(i)));
 	}
 
-	printf("Root data Check: %d\n", AVL.root->data);
+	printf("Root data Check: %d\n", AVL->root->data);
 
 	// Size of AVL
-	printf("AVL size: %d\n", avlTreeSize(&AVL));
+	printf("AVL size: %d\n", avlTreeSize(AVL));
 
 	// Traverse AVL
 	printf("Preorder traverse: \n");
-	avlTreePrintOrder(&AVL, PRE_ORDER);
+	avlTreePrintOrder(AVL, PRE_ORDER);
 	printf("\n");
 	
 	printf("Inorder traverse: \n");
-	avlTreePrintOrder(&AVL, IN_ORDER);
+	avlTreePrintOrder(AVL, IN_ORDER);
 	printf("\n");
 
 	printf("Postorder traverse: \n");
-	avlTreePrintOrder(&AVL, POST_ORDER);
+	avlTreePrintOrder(AVL, POST_ORDER);
 	printf("\n");
 
 	printf("Levelorder traverse: \n");
-	avlTreePrintOrder(&AVL, LEVEL_ORDER);
+	avlTreePrintOrder(AVL, LEVEL_ORDER);
 	printf("\n");
 	
 	printf("Print pretty: \n");
-	avlTreePrint(&AVL);
+	avlTreePrint(AVL);
 	printf("\n");
 
 	// AVL height
-	printf("AVL height: %d\n", avlTreeHeight(&AVL));
+	printf("AVL height: %d\n", avlTreeHeight(AVL));
 	
 	// Remove a node
 	int data = 2;
-	printf("Remove %d: %s\n", data, avlTreeRemove(&AVL, data) == 1 ? "true" : "false");
+	printf("Remove %d: %s\n", data, avlTreeRemove(AVL, data) == 1 ? "true" : "false");
 
 	// Clean up AVL memory
 	printf("Clear AVL... ");
-	avlTreeClear(&AVL);
-	printf("%s\n", AVL.root == NULL ? "Done!" : "Faild!");
-	
+	avlTreeClear(AVL);
+	printf("Done!\n");
+
 	return 0;
 }
 

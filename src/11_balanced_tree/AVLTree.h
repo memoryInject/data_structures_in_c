@@ -60,7 +60,7 @@ typedef struct Queue{
 }Queue;
 
 // Initialize queue
-void queueInit(struct Queue* queue);
+struct Queue* queueInit(void);
 
 // Push an element to the queue, O(1).
 void queuePush(struct Queue* queue, struct Node* treeNode);
@@ -79,7 +79,7 @@ void queueClear(struct Queue* queue);
 void debugData(struct Node* node);
 
 // Initialize AVL 
-void avlTreeInit(struct AVLTree* AVL);
+struct AVLTree* avlTreeInit(void);
 
 // Check if the AVL is active
 bool avlTreeIsActive(struct AVLTree* AVL);

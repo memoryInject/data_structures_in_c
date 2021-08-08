@@ -354,7 +354,7 @@ int printPretty(struct Node* node, int isLeft, int offset, int depth, char s[20]
 // Recursive helper method to compute the hight of the tree
 int treeHeight(struct Node* node){
 	if (node == NULL) return 0;
-	return (treeHeight(node->left) > treeHeight(node->left) ? treeHeight(node->left) : treeHeight(node->right)) + 1;
+	return (treeHeight(node->left) > treeHeight(node->right) ? treeHeight(node->left) : treeHeight(node->right)) + 1;
 }
 
 // Clear BST - memory deallocate using postorder traverse recursion
@@ -427,7 +427,7 @@ void binarySearchTreePrint(struct BinarySearchTree* BST){
 	
 	char s[20][255];
 	for (int i = 0; i < binarySearchTreeHeight(BST); i++)
-		sprintf(s[i], "%80s", " ");
+		sprintf(s[i], "%110s", " "); // For larger tree increase %110s to %200s or more
 	
 	printPretty(BST->root, 0, 0, 0, s);
 

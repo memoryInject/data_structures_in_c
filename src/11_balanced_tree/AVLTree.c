@@ -22,10 +22,13 @@
 */
 
 // Initialize queue
-void queueInit(struct Queue* queue){
+struct Queue* queueInit(void){
+	struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
+
+	return queue;
 }
 
 // Push an element to the queue, O(1).
@@ -82,6 +85,8 @@ void queueClear(struct Queue* queue){
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
+
+	free(queue);
 }
 
 /*
@@ -94,10 +99,13 @@ void debugData(struct Node* node){
 }
 
 // Initialize AVL 
-void avlTreeInit(struct AVLTree* AVL){
+struct AVLTree* avlTreeInit(void){
+	struct AVLTree* AVL = (struct AVLTree*) malloc(sizeof(struct AVLTree));
 	AVL->root = NULL;
 	AVL->nodeCount = 0;
 	AVL->state = true; // Activate the AVL 
+
+	return AVL;
 }
 
 // Check if the AVL is active
@@ -393,29 +401,28 @@ struct Node* postorderNode(struct Node* node){
 // Level order traverse helper method using queue
 void levelorderNode(struct Node* node, int size){
 	// Bring queue data structure
-	struct Queue queue;
-	// Initialize queue
-	queueInit(&queue);
+	struct Queue* queue = queueInit();
+
 	// Add the node to queue
-	queuePush(&queue, node);
+	queuePush(queue, node);
 	// Iterator
 	struct Node* iter;
 	for (int i = 0; i < size; i++){
 		// dequeue data from queue, this will return the tree node
-		iter = queuePop(&queue);
+		iter = queuePop(queue);
 		printf("%d\n", iter->data);
 		// Check if there is any childern, 
 		// add children to queue
 		if(iter->left != NULL){
-			queuePush(&queue, iter->left);
+			queuePush(queue, iter->left);
 		}
 		if(iter->right != NULL){
-			queuePush(&queue, iter->right);
+			queuePush(queue, iter->right);
 		}
 	}
 
 	// Clean up queue memory
-	queueClear(&queue);
+	queueClear(queue);
 }
 
 // Print prettier tree
@@ -452,7 +459,7 @@ int printPretty(Node* node, int isLeft, int offset, int depth, char s[20][255]){
 // Recursive helper method to compute the hight of the tree
 int treeHeight(struct Node* node){
 	if (node == NULL) return 0;
-	return (treeHeight(node->left) > treeHeight(node->left) ? treeHeight(node->left) : treeHeight(node->right)) + 1;
+	return (treeHeight(node->left) > treeHeight(node->right) ? treeHeight(node->left) : treeHeight(node->right)) + 1;
 }
 
 // Clear AVL - memory deallocate using postorder traverse recursion
@@ -524,12 +531,12 @@ void avlTreePrint(struct AVLTree* AVL){
 	avlTreeState(AVL);
 	
 	char s[20][255];
-	for (int i = 0; i < AVL->root->height; i++)
-		sprintf(s[i], "%80s", " ");
+	for (int i = 0; i <= AVL->root->height; i++)
+		sprintf(s[i], "%110s", " "); // For larger tree increase %110s to %200s or more
 	
 	printPretty(AVL->root, 0, 0, 0, s);
 
-	for (int i = 0; i <  AVL->root->height; i++)
+	for (int i = 0; i <=  AVL->root->height; i++)
 		printf("%s\n", s[i]);
 }
 
@@ -543,5 +550,7 @@ void avlTreeClear(struct AVLTree* AVL){
 	avlTreeState(AVL); // Check if the AVL is active	
 	AVL->root = clearNode(AVL->root);
 	AVL->nodeCount = 0;
+
+	free(AVL);
 }
 
