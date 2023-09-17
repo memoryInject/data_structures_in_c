@@ -14,7 +14,6 @@ Data structures implemented in C.
 - Binary search tree
 - Hash table
 - Fenwick tree
-- Dynamic array  
 - Suffix array
 - Balanced tree  
 
